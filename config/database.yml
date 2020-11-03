@@ -22,4 +22,9 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: '2020-group2-viz-teams-tracker-back'
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: password
+  pool: 5
