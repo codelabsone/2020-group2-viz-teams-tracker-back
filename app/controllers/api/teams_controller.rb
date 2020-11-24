@@ -11,7 +11,7 @@ class Api::TeamsController < ApplicationController
             render json: @team, status: :created
         else
             render json: @team.errors, status: :unprocessable_entity
-
+        end
     end
 
     private 
