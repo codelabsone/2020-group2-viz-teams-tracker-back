@@ -1,7 +1,16 @@
-class TeamsController < ApplicationController
+class Api::TeamsController < ApplicationController
+    
+    def index 
+        @teams = Team.all
+        render json: @teams
+    end
+    
     def create
-        @team = TeamsService.create(team_params)
-        @team.save
+        @team = Team.new(team_params)
+        if @team.save
+            render json: @team, status: :created
+        else
+            render json: @team.errors, status: :unprocessable_entity
 
     end
 
