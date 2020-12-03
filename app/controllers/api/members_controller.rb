@@ -1,12 +1,11 @@
-class Api::TeamsController < ApplicationController
-    
+class MembersController < ApplicationController
     def index 
         @teams = Team.all
-        render json: @teams
+        render json: @members
     end
     
     def create
-        @team = Team.new(team_params)
+        @member = Member.new(member)
         if @team.save
             render json: @team, status: :created
         else

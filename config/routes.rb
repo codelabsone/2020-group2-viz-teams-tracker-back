@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :teams do
       get :index
       post :create
+      delete :delete
     end
   end
 end
