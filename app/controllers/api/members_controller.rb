@@ -1,25 +1,26 @@
 class MembersController < ApplicationController
-    def index 
-        @teams = Team.all
-        render json: @members
-    end
-    
-    def create
-        @member = Member.new(member)
-        if @team.save
-            render json: @team, status: :created
-        else
-            render json: @team.errors, status: :unprocessable_entity
+        def index 
+            @members = Member.all
+            render json: @members
         end
-    end
-
-    def delete
-        @team.destroy
+        
+        def create
+            @member = Member.new(member)
+            if @member.save
+                render json: @members, status: :created
+            else
+                render json: @member.errors, status: :unprocessable_entity
+            end
+        end
+    
+        def delete
+            @member.destroy
+        end
+        
+        private 
+            def member_params
+                params.permit(:image, :firstName, :lastName, :jobTitle, :team)
+            end 
+    
     end
     
-    private 
-        def team_params
-            params.permit(:name, :description)
-        end 
-
-end
