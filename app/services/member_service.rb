@@ -5,7 +5,7 @@ class MemberService
             firstName: firstName,
             lastName: lastName,
             jobTitle: jobTitle,
-            team: team
+            team: Team.find(id: team)
         })
         return false unless member.valid?
 

@@ -5,9 +5,9 @@ class Api::MembersController < ApplicationController
         end
         
         def create
-            @member = Member.new(member)
+            @member = Member.new(member_params)
             if @member.save
-                render json: @members, status: :created
+                render json: @member, status: :created
             else
                 render json: @member.errors, status: :unprocessable_entity
             end
@@ -19,7 +19,7 @@ class Api::MembersController < ApplicationController
         
         private 
             def member_params
-                params.permit(:image, :firstName, :lastName, :jobTitle, :team)
+                params.permit(:image, :firstName, :lastName, :jobTitle, :team_id)
             end 
     
     end
