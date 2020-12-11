@@ -2,7 +2,8 @@ class Api::TeamsController < ApplicationController
     
     def index 
         @teams = Team.all
-        render json: @teams
+        # render json: @teams
+        render json: @teams, include: ['members']
     end
     
     def create
@@ -14,9 +15,13 @@ class Api::TeamsController < ApplicationController
         end
     end
 
+    def delete
+        @team.destroy
+    end
+    
     private 
         def team_params
-            params.require(:team, :description).permit(:name, :description)
+            params.permit(:name, :description)
         end 
 
 end
