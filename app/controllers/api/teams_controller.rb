@@ -1,5 +1,6 @@
 class Api::TeamsController < ApplicationController
-    
+    before_action :set_team, only: [:show, :update, :delete]
+
     def index 
         @teams = Team.all
         # render json: @teams
@@ -16,10 +17,18 @@ class Api::TeamsController < ApplicationController
     end
 
     def delete
-        @team.destroy
+        @team.members.each do |m| 
+            m.destroy
+        end 
+        @team.delete
     end
     
     private 
+
+    def set_team
+        @team = Team.find(params[:id])
+      end
+  
         def team_params
             params.permit(:name, :description)
         end 

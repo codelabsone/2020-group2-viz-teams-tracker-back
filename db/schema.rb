@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2020_12_04_001243) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.text "name"
-    t.text "description"
+    t.string "name"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
